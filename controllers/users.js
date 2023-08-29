@@ -1,5 +1,21 @@
 const Users = require('../models/usuarios')
 
+const obtenerUsuarios = async (req, res) => {
+
+    const body = req.body;
+
+    try {
+       const usuarios = await Users.find({});
+       res.send({usuarios});
+
+    } catch (ex) {
+        res.status("405");
+        res.status({error: "error al procesar: "+ex})
+    }
+
+
+}
+
 const usuariosInicio = async (req, res) => {
     const { nombre, telefono, email, id } = req.body;
 
@@ -62,7 +78,8 @@ const borrarUsuario = async (req, res) => {
 module.exports = {
     usuariosInicio,
     registroUsuarios,
-    borrarUsuario
+    borrarUsuario,
+    obtenerUsuarios
 };
 
 

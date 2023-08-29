@@ -7,7 +7,7 @@ class Server {
 
         this.app = express();
         this.rootPath = '/agencia';
-        this.port = process.env.PORT;
+        this.port = process.env.PORT || 3000;
         
         this.middlewares();
         this.routes();
